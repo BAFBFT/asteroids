@@ -2,6 +2,7 @@
 # the open-source pygame library
 # throughout this file
 import pygame
+import sys
 from constants import *
 from player import Player
 from asteroid import Asteroid
@@ -43,7 +44,11 @@ def main():
 
         pygame.display.flip()
         
-        
+        for obj in asteroids:
+            if obj.collision(player1):
+                print("Game Over!")
+                sys.exit()
+
         # limit the framerate to 60 FPS
         dt = clock.tick(60) / 1000
          
