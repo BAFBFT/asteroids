@@ -47,10 +47,14 @@ def main():
 
         pygame.display.flip()
         
-        for obj in asteroids:
-            if obj.collision(player1):
+        for asteroid in asteroids:
+            if asteroid.collision(player1):
                 print("Game Over!")
                 sys.exit()
+            
+            for shot in shots:
+                if shot.collision(asteroid):
+                    asteroid.split()
 
         # limit the framerate to 60 FPS
         dt = clock.tick(60) / 1000
